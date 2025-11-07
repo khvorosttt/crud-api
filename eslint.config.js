@@ -30,7 +30,6 @@ export default [
       '@typescript-eslint/no-explicit-any': 'error',
       '@typescript-eslint/explicit-function-return-type': 'off',
       '@typescript-eslint/explicit-module-boundary-types': 'off',
-      'import/no-unresolved': 'error',
       'prettier/prettier': 'error',
     },
     settings: {
@@ -38,6 +37,9 @@ export default [
         typescript: {
           project: './tsconfig.json',
         },
+        node: {
+          extensions: ['.js', '.ts', '.json']
+        }
       },
     },
   },
