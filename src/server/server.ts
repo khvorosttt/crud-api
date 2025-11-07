@@ -2,6 +2,7 @@ import http from 'node:http';
 import { methods } from '../types/types';
 import { handleGetRequest } from '../api/handleGetRequest';
 import { correctURL } from '../utils/utils';
+import { handlePostRequest } from '../api/handlePostRequest';
 
 const startServer = (PORT: string) => {
     const server = http.createServer();
@@ -17,6 +18,7 @@ const startServer = (PORT: string) => {
                         break;
                     case methods.POST:
                         console.log(`${methods.POST} ${url}`);
+                        handlePostRequest(req, res);
                         break;
                     case methods.PUT:
                         console.log(`${methods.PUT} ${url}`);
@@ -29,7 +31,7 @@ const startServer = (PORT: string) => {
                 console.error(err);
             }
         } else {
-            console.error('URL is not corrent');
+            console.error('URL is not correсt');
         }
     });
 

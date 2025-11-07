@@ -12,4 +12,32 @@ const correctURL = (url: string) => {
     }
 };
 
-export { correctURL };
+const correctBody = (body: unknown) => {
+    if (typeof body !== 'object' || body === null) {
+        return false;
+    }
+    const data = body as {
+        username?: unknown;
+        age?: unknown;
+        hobbies?: unknown;
+    };
+    console.log(data);
+    if (!data.username || !data.age || !data.hobbies) {
+        return false;
+    }
+    if (
+        typeof data.username !== 'string' ||
+        typeof data.age !== 'number' ||
+        !Array.isArray(data.hobbies)
+    ) {
+        return false;
+    }
+    for (const hobby in data.hobbies) {
+        if (typeof hobby !== 'string') {
+            return false;
+        }
+    }
+    return true;
+};
+
+export { correctURL, correctBody };

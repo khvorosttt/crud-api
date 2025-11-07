@@ -14,4 +14,8 @@ const getUserById = (id: string) => {
     return user;
 };
 
-export { getUserById };
+const addUser = (user: IUser) => {
+    users.push(user);
+};
+
+export { getUserById, addUser };
