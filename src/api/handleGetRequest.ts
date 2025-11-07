@@ -21,12 +21,13 @@ const handleGetUser = (url: string, res: http.ServerResponse) => {
             res.writeHead(StatusCodes.OK, { 'Content-Type': 'application/json' });
             res.end(JSON.stringify(user));
         } else {
-            res.writeHead(StatusCodes.NOT_FOUND, 'User not found');
-            res.end();
+            res.writeHead(StatusCodes.NOT_FOUND, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify({ message: `User with ${userId} not found` }));
         }
     } else {
-        res.writeHead(StatusCodes.BAD_REQUEST, 'Invalid user id (not uuid)');
-        res.end();
+        res.writeHead(StatusCodes.BAD_REQUEST, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ message: 'Invalid user id (not uuid)' }));
+        return;
     }
 };
 

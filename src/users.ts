@@ -18,4 +18,16 @@ const addUser = (user: IUser) => {
     users.push(user);
 };
 
-export { getUserById, addUser };
+const updateUser = (id: string, user: Omit<IUser, 'id'>) => {
+    const findedUserIndex = users.findIndex((item) => item.id === id);
+    if (findedUserIndex === -1) {
+        return null;
+    }
+    users[findedUserIndex] = {
+        id: users[findedUserIndex].id,
+        ...user,
+    };
+    return user;
+};
+
+export { getUserById, addUser, updateUser };

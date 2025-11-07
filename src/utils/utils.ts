@@ -21,8 +21,7 @@ const correctBody = (body: unknown) => {
         age?: unknown;
         hobbies?: unknown;
     };
-    console.log(data);
-    if (!data.username || !data.age || !data.hobbies) {
+    if (!data.username || !data.age || !data.hobbies || Object.keys(body as object).length > 3) {
         return false;
     }
     if (
@@ -32,7 +31,7 @@ const correctBody = (body: unknown) => {
     ) {
         return false;
     }
-    for (const hobby in data.hobbies) {
+    for (const hobby of data.hobbies) {
         if (typeof hobby !== 'string') {
             return false;
         }

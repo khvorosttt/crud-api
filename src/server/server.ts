@@ -3,6 +3,7 @@ import { methods } from '../types/types';
 import { handleGetRequest } from '../api/handleGetRequest';
 import { correctURL } from '../utils/utils';
 import { handlePostRequest } from '../api/handlePostRequest';
+import { handlePutRequest } from '../api/handlePutRequest';
 
 const startServer = (PORT: string) => {
     const server = http.createServer();
@@ -22,6 +23,7 @@ const startServer = (PORT: string) => {
                         break;
                     case methods.PUT:
                         console.log(`${methods.PUT} ${url}`);
+                        handlePutRequest(url ?? '', req, res);
                         break;
                     case methods.DELETE:
                         console.log(`${methods.DELETE} ${url}`);

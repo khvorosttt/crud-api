@@ -21,8 +21,8 @@ const handlePostRequest = (req: http.IncomingMessage, res: http.ServerResponse) 
             res.writeHead(StatusCodes.CREATED, { 'Content-Type': 'application/json' });
             res.end(JSON.stringify(newUser));
         } else {
-            res.writeHead(StatusCodes.BAD_REQUEST, 'Missing or invalid required fields');
-            res.end();
+            res.writeHead(StatusCodes.BAD_REQUEST, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify({ message: 'Missing or invalid required fields' }));
         }
     });
 };
