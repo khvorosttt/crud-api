@@ -30,4 +30,13 @@ const updateUser = (id: string, user: Omit<IUser, 'id'>) => {
     return user;
 };
 
-export { getUserById, addUser, updateUser };
+const deleteUserById = (id: string) => {
+    const deletedUserIndex = users.findIndex((item) => item.id === id);
+    if (deletedUserIndex === -1) {
+        return false;
+    }
+    users.splice(deletedUserIndex, 1);
+    return true;
+};
+
+export { getUserById, addUser, updateUser, deleteUserById };

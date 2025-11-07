@@ -4,6 +4,7 @@ import { handleGetRequest } from '../api/handleGetRequest';
 import { correctURL } from '../utils/utils';
 import { handlePostRequest } from '../api/handlePostRequest';
 import { handlePutRequest } from '../api/handlePutRequest';
+import { handleDeleteRequest } from '../api/handleDeleteRequest';
 
 const startServer = (PORT: string) => {
     const server = http.createServer();
@@ -27,6 +28,7 @@ const startServer = (PORT: string) => {
                         break;
                     case methods.DELETE:
                         console.log(`${methods.DELETE} ${url}`);
+                        handleDeleteRequest(url ?? '', res);
                         break;
                 }
             } catch (err) {
