@@ -50,6 +50,7 @@ const startServer = (PORT: string) => {
     });
 
     server.listen(PORT);
+    return server;
 };
 
 export { startServer };

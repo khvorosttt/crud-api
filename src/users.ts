@@ -1,13 +1,15 @@
 import { IUser } from './types/types';
 
-export const users: IUser[] = [
-    {
-        id: '6ec0bd7f-11c0-43da-975e-2a8ad9ebae0b',
-        username: 'Tatsiana',
-        age: 24,
-        hobbies: ['programming', 'reading', 'singing'],
-    },
-];
+// export const users: IUser[] = [
+//     {
+//         id: '6ec0bd7f-11c0-43da-975e-2a8ad9ebae0b',
+//         username: 'Tatsiana',
+//         age: 24,
+//         hobbies: ['programming', 'reading', 'singing'],
+//     },
+// ];
+
+export const users: IUser[] = [];
 
 const getUserById = (id: string) => {
     const user = users.find((item) => item.id === id);
@@ -27,7 +29,7 @@ const updateUser = (id: string, user: Omit<IUser, 'id'>) => {
         id: users[findedUserIndex].id,
         ...user,
     };
-    return user;
+    return users[findedUserIndex];
 };
 
 const deleteUserById = (id: string) => {
@@ -39,4 +41,8 @@ const deleteUserById = (id: string) => {
     return true;
 };
 
-export { getUserById, addUser, updateUser, deleteUserById };
+const clearUsers = () => {
+    users.length = 0;
+};
+
+export { getUserById, addUser, updateUser, deleteUserById, clearUsers };
