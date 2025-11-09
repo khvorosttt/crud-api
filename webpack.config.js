@@ -9,7 +9,7 @@ const __dirname = path.dirname(__filename);
 export default {
   entry: {
     index: './src/index.ts',
-    cluster: './src/cluster.ts'
+    cluster: './src/server/cluster.ts'
   },
   target: 'node',
   mode: process.env.NODE_ENV || 'development',
