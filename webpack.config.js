@@ -28,6 +28,13 @@ export default {
   output: {
     filename: '[name].js',
     path: path.resolve(__dirname, 'dist'),
+    module: true,
+    library: {
+      type: 'module'
+    }
+  },
+  experiments: {
+    outputModule: true
   },
   plugins: [
     new CleanWebpackPlugin(),
