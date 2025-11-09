@@ -1,8 +1,15 @@
+import { Worker } from 'node:cluster';
+
 interface IUser {
     id: string;
     username: string;
     age: number;
     hobbies: string[];
+}
+
+interface IWorker {
+    worker: Worker;
+    PORT: string;
 }
 
 enum methods {
@@ -21,4 +28,4 @@ enum StatusCodes {
     INTERNAL_SERVER_ERROR = 500,
 }
 
-export { IUser, methods, StatusCodes };
+export { IUser, IWorker, methods, StatusCodes };

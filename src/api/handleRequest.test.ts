@@ -6,9 +6,9 @@ import { addUser, clearUsers, users } from '../users';
 import { v4, validate } from 'uuid';
 
 jest.mock('uuid', () => ({
-  ...jest.requireActual('uuid'),
-  v4: jest.fn(() => 'testId'),
-  validate: jest.fn()
+    ...jest.requireActual('uuid'),
+    v4: jest.fn(() => 'testId'),
+    validate: jest.fn(),
 }));
 
 const mockV4 = v4 as jest.MockedFunction<typeof v4>;
@@ -44,12 +44,12 @@ describe('test correct http request', () => {
         expect(body).toEqual([]);
     });
 
-    test('test POST api/users request (a response containing newly created record is expected)', async() => {
+    test('test POST api/users request (a response containing newly created record is expected)', async () => {
         const testUser: Omit<IUser, 'id'> = {
             username: 'test',
             age: 1,
             hobbies: [],
-        }
+        };
         const res = await fetch(baseUrl, {
             method: methods.POST,
             headers: {
@@ -58,7 +58,7 @@ describe('test correct http request', () => {
             body: JSON.stringify(testUser),
         });
         expect(res.status).toBe(StatusCodes.CREATED);
-        const user:IUser = await res.json();
+        const user: IUser = await res.json();
         expect(user.username).toEqual(testUser.username);
         expect(user.age).toEqual(testUser.age);
         expect(user.hobbies).toEqual(testUser.hobbies);
@@ -92,7 +92,7 @@ describe('test correct http request', () => {
             username: 'test2',
             age: 22,
             hobbies: ['swimming'],
-        }
+        };
         mockValidate.mockReturnValue(true);
         const res = await fetch(`${baseUrl}/${testUser.id}`, {
             method: methods.PUT,
@@ -103,7 +103,7 @@ describe('test correct http request', () => {
         });
         expect(res.status).toBe(StatusCodes.OK);
         const body = await res.json();
-        expect(body).toEqual({id: testUser.id, ...newBody});
+        expect(body).toEqual({ id: testUser.id, ...newBody });
     });
 
     test('test DELETE api/users/{userId} request, try to delete the created object by id (confirmation of successful deletion is expected)', async () => {
