@@ -7,7 +7,10 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 export default {
-  entry: './src/index.ts',
+  entry: {
+    index: './src/index.ts',
+    cluster: './src/server/cluster.ts'
+  },
   target: 'node',
   mode: process.env.NODE_ENV || 'development',
   module: {
@@ -23,8 +26,15 @@ export default {
     extensions: ['.ts', '.js'],
   },
   output: {
-    filename: 'index.js',
+    filename: '[name].js',
     path: path.resolve(__dirname, 'dist'),
+    module: true,
+    library: {
+      type: 'module'
+    }
+  },
+  experiments: {
+    outputModule: true
   },
   plugins: [
     new CleanWebpackPlugin(),
